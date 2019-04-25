@@ -4,5 +4,11 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class EldeebService {
-  constructor() {}
+  constructor() {
+    console.log("*** EldeebService ***");
+  }
+
+  test() {
+    console.log("*** EldeebService.test() ***");
+  }
 }
