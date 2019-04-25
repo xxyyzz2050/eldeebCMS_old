@@ -10,7 +10,10 @@ module.exports = {
     server: "./server.ts"
   },
   target: "node",
-  resolve: { extensions: [".ts", ".js"] },
+  resolve: {
+    extensions: [".ts", ".js"],
+    modules: [path.resolve("."), "node_modules"]
+  },
   optimization: {
     minimize: false
   },
@@ -44,4 +47,16 @@ module.exports = {
       {}
     )
   ]
+
+  /*
+  //ReferenceError: window is not defined  https://github.com/ui-router/angular/issues/134#issuecomment-310699942
+  new webpack.DefinePlugin({
+    path: undefined,
+    window: undefined,
+    document: undefined,
+    location: JSON.stringify({
+      protocol: "https",
+      host: `localhost`
+    })
+  })*/
 };

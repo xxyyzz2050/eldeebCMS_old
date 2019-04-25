@@ -1,21 +1,30 @@
 import "zone.js/dist/zone-node";
+import "reflect-metadata";
+import { readFileSync } from "fs";
 import { enableProdMode } from "@angular/core";
-// Express Engine
 import { ngExpressEngine } from "@nguniversal/express-engine";
-// Import module map for lazy loading
-import { provideModuleMap } from "@nguniversal/module-map-ngfactory-loader";
+import { provideModuleMap } from "@nguniversal/module-map-ngfactory-loader"; //for lazy loading modules
 
 import * as express from "express";
 import { join } from "path";
 
-// Faster server renders w/ Prod mode (dev mode never needed)
-enableProdMode();
+enableProdMode(); // Faster server renders w/ Prod mode (dev mode never needed)
 
 // Express server
 const app = express();
-
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4200; //changed from 4000 to 4200 just to same as angular default port
 const DIST_FOLDER = join(process.cwd(), "dist/browser");
+
+//https://mdbootstrap.com/support/angular/angular-universal-with-mdboostrap-not-working/
+const domino = require("domino"); //Server-side DOM implementation based on Mozilla's dom.js
+const template = readFileSync(join(DIST_FOLDER, "/index.html")).toString();
+const win = domino.createWindow(template);
+global["window"] = win;
+global["Node"] = win.Node;
+global["navigator"] = win.navigator;
+global["Event"] = win.Event;
+global["Event"]["prototype"] = win.Event.prototype;
+global["document"] = win.document;
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const {
