@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "d-eldeeb",
   template: `
-    <p>eldeeb works!</p>
+    <p>eldeeb library!</p>
   `,
   styles: []
 })
