@@ -8,7 +8,6 @@ todo:
 */
 import util from "util";
 
-
 /*
 // moved to index.d.ts
 export type FN = import("./promise").FN; //https://stackoverflow.com/a/52115295; export type FN=...
@@ -264,9 +263,9 @@ todo: what is the usage of this function?
   }
 
   // =======================================================================================//
-  //Loading modules, deprecated to remove ciclic dependencies i.e index reqires promise whitch requires index, consumer to import the proper class
+  //dynamically Loading modules, deprecated to remove ciclic dependencies i.e index reqires promise whitch requires index, consumer to import the proper class
 
-/*  db(
+  /*  db(
     type: string,
     options: object,
     done?: () => any,
@@ -302,4 +301,4 @@ todo: what is the usage of this function?
     return new files(root);
   }
   */
-};
+}

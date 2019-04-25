@@ -9,16 +9,16 @@ import { EldeebService } from "eldeeb";
 @NgModule({
   declarations: [AppComponent, ErrorComponent],
   imports: [
+    EldeebModule,
     BrowserModule.withServerTransition({ appId: "serverApp" }),
-    AppRoutingModule,
-    EldeebModule
+    AppRoutingModule
   ],
-  providers: [EldeebService],
+  //  providers: [EldeebService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(public eldeebService: EldeebService) {
+  /*  constructor(public eldeebService: EldeebService) {
     console.log("*** AppModule started ***");
     eldeebService.test();
-  }
+  }*/
 }
